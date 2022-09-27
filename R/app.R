@@ -5,8 +5,8 @@
 #' @import ggplot2
 #' @import ggmap
 #' @import dplyr
-#' @importFrom  shiny fluidPage 
-#' @import shinyjs
+#' @import  shiny 
+#' @importFrom shinyjs useShinyjs show hide
 #' @import Lab5 
 #' @export 
 #=================== DESING THE UI =======================
@@ -76,7 +76,7 @@ server <- function(input, output, session) {
         if(as.double(input$min_wind) %% 1 == 0)
         {
           
-          plot(find_crime_from_time_and_type(crime, input$max_wind, as.integer(input$min_wind)))
+          plot(find_crime_from_time_and_type(ggmap::crime, input$max_wind, as.integer(input$min_wind)))
         }
         else{
           
@@ -93,7 +93,7 @@ server <- function(input, output, session) {
         if(as.double(input$min_wind) %% 1 == 0)
         {
           
-          find_crime_from_month(crime, as.integer(input$min_wind))
+          find_crime_from_month(ggmap::crime, as.integer(input$min_wind))
         }
         else{
           
@@ -109,7 +109,7 @@ server <- function(input, output, session) {
                            label = "Type of crime")
         updateActionButton(session, "min_wind",
                            label = "")
-        find_crime_from_type(crime,input$max_wind)
+        find_crime_from_type(ggmap::crime,input$max_wind)
         
       }
       

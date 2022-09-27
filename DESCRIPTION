@@ -9,7 +9,7 @@ Description: Using Online API to write shiny app. The app is to display the crim
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.2.1
-Depends: R (>= 3.5.0), ggplot2, ggmap, shiny, dplyr, shinyjs,Lab5
+Depends: R (>= 3.5.0), ggplot2, ggmap, shiny, dplyr, shinyjs
 Suggests: 
     knitr,
     rmarkdown,
@@ -17,5 +17,6 @@ Suggests:
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 LazyData: true
-
+Imports:Lab5
+Remotes:ggithub::kiriakospapa/Lab-5
 
