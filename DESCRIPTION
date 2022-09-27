@@ -1,0 +1,21 @@
+Package: Lab5shinyapp
+Type: Package
+Title: API
+Version: 1.0
+Date: 2022-09-23
+Author: Yi Hung Chen, Kyriakos Papadopoulos
+Maintainer: Yi Hung Chen<yihch883@student.liu.se> ,Kyriakos Papadopoulos<kyrpa853@student.liu.se>
+Description: Using Online API to write shiny app. The app is to display the crime and wind data near Huston.
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.2.1
+Depends: R (>= 3.5.0), ggplot2, ggmap, shiny, dplyr, shinyjs,Lab5
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+LazyData: true
+
+
