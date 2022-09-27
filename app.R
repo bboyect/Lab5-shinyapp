@@ -7,7 +7,7 @@
 #' @import dplyr
 #' @import  shiny 
 #' @importFrom shinyjs useShinyjs show hide
-#' @import Lab5 
+#' @import  Lab5
 #' @export 
 #=================== DESING THE UI =======================
 
