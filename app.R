@@ -11,6 +11,9 @@
 #' @export 
 #=================== DESING THE UI =======================
 
+if (!requireNamespace("Lab5")) {
+  stop("Please install Lab5 package first. Install using devtools::install_github(\"kiriakospapa/Lab-5\")")
+}
   
 ui <- shiny::fluidPage(
   
