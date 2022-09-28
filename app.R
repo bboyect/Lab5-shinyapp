@@ -14,6 +14,9 @@
 if (!requireNamespace("Lab5")) {
   stop("Please install Lab5 package first. Install using devtools::install_github(\"kiriakospapa/Lab-5\")")
 }
+if (!requireNamespace("shinyjs")) {
+  stop("Please install shinyjs package first. Install using install.package(\"shinyjs\")")
+}
   
 ui <- shiny::fluidPage(
   
