@@ -11,20 +11,19 @@
 #' @export 
 #=================== DESING THE UI =======================
 
-
   
-ui <- fluidPage(
+ui <- shiny::fluidPage(
   
-  useShinyjs(),
-  selectInput( "option", label = "Select what you want to see",
+  shinyjs::useShinyjs(),
+  shiny::selectInput( "option", label = "Select what you want to see",
                
                choices = list("Winds in Huston", "Crimes in huston by month and type", "Crimes in huston by month", "Crimes in huston by type"),
                selected = NULL, width = "20%"),
   
   
-  textInputRow(inputId="min_wind", label="Minimum of wind", value = 0, class="input-small"),
-  textInputRow(inputId="max_wind", label="Maximum of wind", value = 100),
-  plotOutput(outputId="probs")
+  Lab5::textInputRow(inputId="min_wind", label="Minimum of wind", value = 0, class="input-small"),
+  Lab5::textInputRow(inputId="max_wind", label="Maximum of wind", value = 100),
+  shiny::plotOutput(outputId="probs")
 )
 
 #================= CREATING BACKEND ======================
@@ -39,10 +38,10 @@ server <- function(input, output, session) {
     # Change plot depending on the option selected
     {
       if (input$option == "Winds in Huston"){
-        show("max_wind")
-        updateActionButton(session, "min_wind",
+        shinyjs::show("max_wind")
+        shiny::updateActionButton(session, "min_wind",
                            label = "Minumum of wind")
-        updateActionButton(session, "max_wind",
+        shiny::updateActionButton(session, "max_wind",
                            label = "Maximum of wind")
         
         # updateNumericInput(session, "min_wind", value = "0")
@@ -58,25 +57,25 @@ server <- function(input, output, session) {
         }
         else{
           
-          wind_plot(as.integer(input$min_wind), as.integer(input$max_wind))
+          Lab5::wind_plot(as.integer(input$min_wind), as.integer(input$max_wind))
         }
       }
       else if(input$option == "Crimes in huston by month and type"){
         
-        show("max_wind")
-        show("min_wind")
+        shinyjs::show("max_wind")
+        shinyjs::show("min_wind")
         
         
         
-        updateActionButton(session, "min_wind",label = "Month")
+        shiny::updateActionButton(session, "min_wind",label = "Month")
         
-        updateActionButton(session, "max_wind",
+        shiny::updateActionButton(session, "max_wind",
                            label = "Type of crime")
         
         if(as.double(input$min_wind) %% 1 == 0)
         {
           
-          plot(find_crime_from_time_and_type(ggmap::crime, input$max_wind, as.integer(input$min_wind)))
+          plot( Lab5::find_crime_from_time_and_type(ggmap::crime, input$max_wind, as.integer(input$min_wind)))
         }
         else{
           
@@ -85,15 +84,15 @@ server <- function(input, output, session) {
       }
       else if(input$option == "Crimes in huston by month"){
         
-        hide("max_wind")
-        updateActionButton(session, "max_wind",
+        shinyjs::hide("max_wind")
+        shiny::updateActionButton(session, "max_wind",
                            label = "")
-        updateActionButton(session, "min_wind",
+        shiny::updateActionButton(session, "min_wind",
                            label = "Month")
         if(as.double(input$min_wind) %% 1 == 0)
         {
           
-          find_crime_from_month(ggmap::crime, as.integer(input$min_wind))
+          Lab5::find_crime_from_month(ggmap::crime, as.integer(input$min_wind))
         }
         else{
           
@@ -105,11 +104,11 @@ server <- function(input, output, session) {
         shinyjs::show("max_wind")
         
         
-        updateActionButton(session, "max_wind",
+        shiny::updateActionButton(session, "max_wind",
                            label = "Type of crime")
-        updateActionButton(session, "min_wind",
+        shiny::updateActionButton(session, "min_wind",
                            label = "")
-        find_crime_from_type(ggmap::crime,input$max_wind)
+        Lab5::find_crime_from_type(ggmap::crime,input$max_wind)
         
       }
       
@@ -118,4 +117,4 @@ server <- function(input, output, session) {
   
 }
 
-shinyApp(ui, server)
+shiny::shinyApp(ui, server)
