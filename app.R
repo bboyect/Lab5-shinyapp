@@ -18,6 +18,7 @@ if (!requireNamespace("shinyjs")) {
   stop("Please install shinyjs package first. Install using install.package(\"shinyjs\")")
 }
   
+
 ui <- shiny::fluidPage(
   
   shinyjs::useShinyjs(),
